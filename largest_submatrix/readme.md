@@ -1,4 +1,4 @@
-LeetCode link: https://leetcode.com/problems/maximal-square/
+LeetCode link: [LeetCode](https://leetcode.com/problems/maximal-square/)
 
 221. Maximal Square
 Medium
