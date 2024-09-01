@@ -46,7 +46,7 @@ void on_open(client* c, websocketpp::connection_hdl hdl) {
     std::cout << "on open" << std::endl;
     websocketpp::lib::error_code ec;
 
-    c->send(hdl, "hello world", websocketpp::frame::opcode::text, ec);
+    c->send(hdl, "pong", websocketpp::frame::opcode::text, ec);
     if (ec) {
         std::cout << "Echo failed because: " << ec.message() << std::endl;
     }
@@ -65,7 +65,7 @@ void on_message(client* c, websocketpp::connection_hdl hdl, message_ptr msg) {
 
     websocketpp::lib::error_code ec;
 
-    c->send(hdl, msg->get_payload(), msg->get_opcode(), ec);
+    c->send(hdl, "pong", msg->get_opcode(), ec);
     if (ec) {
         std::cout << "Echo failed because: " << ec.message() << std::endl;
     }
@@ -78,7 +78,7 @@ int main(int argc, char* argv[]) {
     // Create a client endpoint
     client c;
 
-    std::string uri = "ws://localhost:5000";
+    std::string uri = "ws://localhost:5000/echo";
 
     if (argc == 2) {
         uri = argv[1];
